@@ -12,14 +12,17 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand,
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
+    private readonly ICategoriesRepository _categoriesRepository;
     private readonly IProductsRepository _productsRepository;
 
     public CreateProductCommandHandler(IMapper mapper,
                                        IUnitOfWork unitOfWork,
+                                       ICategoriesRepository categoriesRepository,
                                        IProductsRepository productsRepository)
     {
         _mapper = mapper;
         _unitOfWork = unitOfWork;
+        _categoriesRepository = categoriesRepository;
         _productsRepository = productsRepository;
     }
 
@@ -27,6 +30,8 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand,
     {
         var price = Price.Create(request.Price);
         var product = new Product(request.CategoryId, request.Name, request.Description, price);
+
+        await _categoriesRepository.GetByIdAsync(request.CategoryId, cancellationToken);
 
         _productsRepository.Add(product);
 
