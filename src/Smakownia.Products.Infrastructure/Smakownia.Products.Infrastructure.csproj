@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Smakownia.Products.Application\Smakownia.Products.Application.csproj" />
+    <ProjectReference Include="..\Smakownia.Products.Domain\Smakownia.Products.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
