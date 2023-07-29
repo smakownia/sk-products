@@ -6,6 +6,11 @@ services:
     build:
       context: .
       dockerfile: src/Smakownia.Products.Api/Dockerfile
+    networks:
+      - default
+      - smakownia
+    depends_on:
+      - ms_sql
   ms_sql:
     image: mcr.microsoft.com/mssql/server:2019-CU14-ubuntu-20.04
     ports:
@@ -13,3 +18,7 @@ services:
     environment:
       - ACCEPT_EULA=Y
       - MSSQL_SA_PASSWORD=yourStrong(!)Password
+
+networks:
+  smakownia:
+    name: smakownia
