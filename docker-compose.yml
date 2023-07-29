@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  smakownia.products.api:
+    image: ${DOCKER_REGISTRY-}smakowniaproductsapi
+    build:
+      context: .
+      dockerfile: src/Smakownia.Products.Api/Dockerfile
+  ms_sql:
+    image: mcr.microsoft.com/mssql/server:2019-CU14-ubuntu-20.04
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=yourStrong(!)Password

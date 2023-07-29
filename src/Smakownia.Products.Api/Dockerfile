@@ -6,6 +6,9 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["src/Smakownia.Products.Api/Smakownia.Products.Api.csproj", "src/Smakownia.Products.Api/"]
+COPY ["src/Smakownia.Products.Application/Smakownia.Products.Application.csproj", "src/Smakownia.Products.Application/"]
+COPY ["src/Smakownia.Products.Domain/Smakownia.Products.Domain.csproj", "src/Smakownia.Products.Domain/"]
+COPY ["src/Smakownia.Products.Infrastructure/Smakownia.Products.Infrastructure.csproj", "src/Smakownia.Products.Infrastructure/"]
 RUN dotnet restore "src/Smakownia.Products.Api/Smakownia.Products.Api.csproj"
 COPY . .
 WORKDIR "/src/src/Smakownia.Products.Api"
