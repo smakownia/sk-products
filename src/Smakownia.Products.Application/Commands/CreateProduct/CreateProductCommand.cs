@@ -7,7 +7,7 @@ namespace Smakownia.Products.Application.Commands.CreateProduct;
 
 public sealed record CreateProductCommand : IRequest<ProductDto>
 {
-    public CreateProductCommand(Guid categoryId, string name, string description, long price)
+    public CreateProductCommand(Guid categoryId, string name, string? description, long price)
     {
         CategoryId = categoryId;
         Name = name;
@@ -22,9 +22,7 @@ public sealed record CreateProductCommand : IRequest<ProductDto>
     [MinLength(1)]
     public string Name { get; init; }
 
-    [Required]
-    [MinLength(1)]
-    public string Description { get; init; }
+    public string? Description { get; init; }
 
     [Required]
     [Range(1, long.MaxValue)]
