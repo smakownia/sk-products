@@ -2,5 +2,5 @@
 
 public interface IUnitOfWork
 {
-    Task CommitAsync(CancellationToken token);
+    Task CommitAsync(CancellationToken token = default);
 }

@@ -11,7 +11,7 @@ public class UnitOfWork : IUnitOfWork
         _productsContext = productsContext;
     }
 
-    public async Task CommitAsync(CancellationToken token)
+    public async Task CommitAsync(CancellationToken token = default)
     {
         await _productsContext.SaveChangesAsync(token);
     }
