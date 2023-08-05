@@ -13,9 +13,10 @@ public class ProductsController : BaseController
 {
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult<IEnumerable<ProductDto>>> GetAll(CancellationToken cancellationToken)
+    public async Task<ActionResult<IEnumerable<ProductDto>>> GetAll([FromQuery] GetAllProductsQuery query,
+                                                                    CancellationToken cancellationToken)
     {
-        return Ok(await Sender.Send(new GetAllProductsQuery(), cancellationToken));
+        return Ok(await Sender.Send(query, cancellationToken));
     }
 
     [HttpGet("{id:guid}")]

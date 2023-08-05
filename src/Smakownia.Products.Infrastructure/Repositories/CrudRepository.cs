@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Smakownia.Products.Domain.Abstractions;
 using Smakownia.Products.Infrastructure.Exceptions;
+using System.Linq.Expressions;
 
 namespace Smakownia.Products.Infrastructure.Repositories;
 
@@ -13,12 +14,20 @@ public abstract class CrudRepository<T> : ICrudRepository<T> where T : Entity
         _productsContext = productsContext;
     }
 
-    public async Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken)
+    public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>>? predicate = default,
+                                                  CancellationToken cancellationToken = default)
     {
-        return await _productsContext.Set<T>().ToListAsync(cancellationToken);
+        IQueryable<T> query = _productsContext.Set<T>();
+
+        if (predicate is not null)
+        {
+            query = query.Where(predicate);
+        }
+
+        return await query.ToListAsync(cancellationToken);
     }
 
-    public async Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+    public async Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
         var entity = await _productsContext.Set<T>()
                                            .Where(e => e.Id == id)
