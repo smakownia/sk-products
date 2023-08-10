@@ -6,12 +6,7 @@ namespace Smakownia.Products.Application.Commands.CreateCategory;
 
 public sealed record CreateCategoryCommand : IRequest<Category>
 {
-    public CreateCategoryCommand(string name)
-    {
-        Name = name;
-    }
-
     [Required]
     [MinLength(1)]
-    public string Name { get; init; }
+    public string Name { get; init; } = string.Empty;
 }

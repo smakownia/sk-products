@@ -31,11 +31,12 @@ public class ProductsController : BaseController
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<ProductDto>> Create([FromBody] CreateProductCommand command,
-                                                       CancellationToken cancellationToken) {
+    public async Task<ActionResult<ProductDto>> Create([FromForm] CreateProductCommand command,
+                                                       CancellationToken cancellationToken)
+    {
         var product = await Sender.Send(command, cancellationToken);
 
-        return CreatedAtAction(nameof(GetById), new {id = product.Id}, product);
+        return CreatedAtAction(nameof(GetById), new { id = product.Id }, product);
     }
 
     [HttpDelete("{id:guid}")]
