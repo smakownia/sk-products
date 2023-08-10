@@ -9,7 +9,12 @@ public class ProductsMapperProfile : Profile
 {
     public ProductsMapperProfile()
     {
-        CreateMap<Price, long>().ConvertUsing(f => f.Value);
         CreateMap<Product, ProductDto>();
+        CreateMap<Price, PriceDto>()
+            .ConvertUsing(f => new()
+            {
+                Raw = f.Value,
+                Formatted = decimal.Divide(f.Value, 100).ToString("0.00") + "zł"
+            });
     }
 }
