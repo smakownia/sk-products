@@ -5,9 +5,10 @@ namespace Smakownia.Products.Domain.Entities;
 
 public class Product : Entity
 {
-    public Product(Guid categoryId, string name, string? description, Price price) : base()
+    public Product(Guid categoryId, string imageFileName, string name, string? description, Price price) : base()
     {
         CategoryId = categoryId;
+        ImageFileName = imageFileName;
         Name = name;
         Description = description;
         Price = price;
@@ -16,6 +17,7 @@ public class Product : Entity
     protected Product() { }
 
     public Guid CategoryId { get; private set; }
+    public string ImageFileName { get; private set; }
     public string Name { get; private set; }
     public string? Description { get; private set; }
     public Price Price { get; private set; }

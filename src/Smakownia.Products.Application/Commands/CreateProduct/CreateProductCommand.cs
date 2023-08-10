@@ -1,4 +1,6 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
+using Smakownia.Products.Application.Attributes;
 using Smakownia.Products.Application.Dtos;
 using Smakownia.Products.Domain.Entities;
 using System.ComponentModel.DataAnnotations;
@@ -7,20 +9,16 @@ namespace Smakownia.Products.Application.Commands.CreateProduct;
 
 public sealed record CreateProductCommand : IRequest<ProductDto>
 {
-    public CreateProductCommand(Guid categoryId, string name, string? description, long price)
-    {
-        CategoryId = categoryId;
-        Name = name;
-        Description = description;
-        Price = price;
-    }
-
     [Required]
     public Guid CategoryId { get; init; }
 
     [Required]
+    [ImageSignature]
+    public IFormFile Image { get; init; }
+
+    [Required]
     [MinLength(1)]
-    public string Name { get; init; }
+    public string Name { get; init; } = string.Empty;
 
     public string? Description { get; init; }
 

@@ -11,6 +11,7 @@ public static class ConfigureServices
     {
         services.AddTransient<IProductsRepository, ProductsRepository>();
         services.AddTransient<ICategoriesRepository, CategoriesRepository>();
+        services.AddTransient<IFilesRepository, FilesRepository>();
         services.AddTransient<IUnitOfWork, UnitOfWork>();
 
         return services;

@@ -9,7 +9,7 @@ using Smakownia.Products.Infrastructure.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ProductsContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("MsSql")));
-builder.Services.AddApplicationServices();
+builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddInfrastructureServices();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
