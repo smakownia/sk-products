@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  smakownia.products.api:
+    ports:
+      - 8002:80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  ms-sql:
+    ports:
+      - 1433:1433

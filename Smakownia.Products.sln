@@ -5,15 +5,15 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9DD2A072-B5E1-49CA-8151-96B13AC957D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smakownia.Products.Api", "src\Smakownia.Products.Api\Smakownia.Products.Api.csproj", "{2D620E4B-5F37-4B8A-9DD9-7DC0521728DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smakownia.Products.Api", "src\Smakownia.Products.Api\Smakownia.Products.Api.csproj", "{2D620E4B-5F37-4B8A-9DD9-7DC0521728DC}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{C3FF05AA-7923-4289-8760-640286A6135C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smakownia.Products.Infrastructure", "src\Smakownia.Products.Infrastructure\Smakownia.Products.Infrastructure.csproj", "{C97AE11C-8BAA-4A77-87F8-A1CEC85B6B95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smakownia.Products.Infrastructure", "src\Smakownia.Products.Infrastructure\Smakownia.Products.Infrastructure.csproj", "{C97AE11C-8BAA-4A77-87F8-A1CEC85B6B95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smakownia.Products.Application", "src\Smakownia.Products.Application\Smakownia.Products.Application.csproj", "{38EBF417-6B0B-4743-B255-CBE41CC46118}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smakownia.Products.Application", "src\Smakownia.Products.Application\Smakownia.Products.Application.csproj", "{38EBF417-6B0B-4743-B255-CBE41CC46118}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smakownia.Products.Domain", "src\Smakownia.Products.Domain\Smakownia.Products.Domain.csproj", "{2B6FDF15-537D-4B5B-8F40-70E4E0B9E65C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smakownia.Products.Domain", "src\Smakownia.Products.Domain\Smakownia.Products.Domain.csproj", "{2B6FDF15-537D-4B5B-8F40-70E4E0B9E65C}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{C64055B7-03A7-4964-AE52-0A10AC5AAF68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +25,6 @@ Global
 		{2D620E4B-5F37-4B8A-9DD9-7DC0521728DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D620E4B-5F37-4B8A-9DD9-7DC0521728DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D620E4B-5F37-4B8A-9DD9-7DC0521728DC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C3FF05AA-7923-4289-8760-640286A6135C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C3FF05AA-7923-4289-8760-640286A6135C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C3FF05AA-7923-4289-8760-640286A6135C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C3FF05AA-7923-4289-8760-640286A6135C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C97AE11C-8BAA-4A77-87F8-A1CEC85B6B95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C97AE11C-8BAA-4A77-87F8-A1CEC85B6B95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C97AE11C-8BAA-4A77-87F8-A1CEC85B6B95}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,6 +37,10 @@ Global
 		{2B6FDF15-537D-4B5B-8F40-70E4E0B9E65C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B6FDF15-537D-4B5B-8F40-70E4E0B9E65C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B6FDF15-537D-4B5B-8F40-70E4E0B9E65C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C64055B7-03A7-4964-AE52-0A10AC5AAF68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C64055B7-03A7-4964-AE52-0A10AC5AAF68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C64055B7-03A7-4964-AE52-0A10AC5AAF68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C64055B7-03A7-4964-AE52-0A10AC5AAF68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
