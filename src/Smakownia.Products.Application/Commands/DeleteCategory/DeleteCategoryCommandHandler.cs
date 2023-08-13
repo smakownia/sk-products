@@ -34,7 +34,7 @@ public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryComman
 
         foreach (var product in products)
         {
-            await _eventBus.PublishAsync(new ProductDeletedEvent(product.Id));
+            await _eventBus.PublishAsync(new ProductDeleted(product.Id));
         }
 
         return Unit.Value;

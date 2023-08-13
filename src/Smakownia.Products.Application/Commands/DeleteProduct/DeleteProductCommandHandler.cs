@@ -28,7 +28,7 @@ public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand,
 
         await _unitOfWork.CommitAsync(cancellationToken);
 
-        await _eventBus.PublishAsync(new ProductDeletedEvent(product.Id));
+        await _eventBus.PublishAsync(new ProductDeleted(product.Id));
 
         return Unit.Value;
     }
