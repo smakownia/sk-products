@@ -9,18 +9,18 @@ public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryComman
 {
     private readonly IEventBus _eventBus;
     private readonly IUnitOfWork _unitOfWork;
-    private readonly ICategoriesRepository _categoriesRepository;
     private readonly IProductsRepository _productsRepository;
+    private readonly ICategoriesRepository _categoriesRepository;
 
     public DeleteCategoryCommandHandler(IEventBus eventBus,
                                         IUnitOfWork unitOfWork,
-                                        ICategoriesRepository categoriesRepository,
-                                        IProductsRepository productsRepository)
+                                        IProductsRepository productsRepository,
+                                        ICategoriesRepository categoriesRepository)
     {
         _eventBus = eventBus;
         _unitOfWork = unitOfWork;
-        _categoriesRepository = categoriesRepository;
         _productsRepository = productsRepository;
+        _categoriesRepository = categoriesRepository;
     }
 
     public async Task<Unit> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
