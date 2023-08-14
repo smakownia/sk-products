@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Smakownia.Products.Application.Commands.CreateProduct;
 using Smakownia.Products.Application.Commands.DeleteProduct;
 using Smakownia.Products.Application.Dtos;
@@ -12,7 +13,6 @@ namespace Smakownia.Products.Api.Controllers;
 public class ProductsController : BaseController
 {
     [HttpGet]
-    [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<ProductDto>>> GetAll([FromQuery] GetAllProductsQuery query,
                                                                     CancellationToken cancellationToken)
     {
@@ -20,17 +20,12 @@ public class ProductsController : BaseController
     }
 
     [HttpGet("{id:guid}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<ProductDto>> GetById([FromRoute] Guid id, CancellationToken cancellationToken)
     {
         return Ok(await Sender.Send(new GetProductByIdQuery(id), cancellationToken));
     }
 
-    [HttpPost]
-    [ProducesResponseType(StatusCodes.Status201Created)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [HttpPost, Authorize(Roles = "Admin")]
     public async Task<ActionResult<ProductDto>> Create([FromForm] CreateProductCommand command,
                                                        CancellationToken cancellationToken)
     {
@@ -39,10 +34,7 @@ public class ProductsController : BaseController
         return CreatedAtAction(nameof(GetById), new { id = product.Id }, product);
     }
 
-    [HttpDelete("{id:guid}")]
-    [ProducesResponseType(StatusCodes.Status204NoContent)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [HttpDelete("{id:guid}"), Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
     {
         await Sender.Send(new DeleteProductCommand(id), cancellationToken);
