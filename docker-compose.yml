@@ -1,0 +1,34 @@
+version: '3.4'
+
+services:
+  smakownia.products.api:
+    image: ${DOCKER_REGISTRY-}smakowniaproductsapi
+    build:
+      context: .
+      dockerfile: src/Smakownia.Products.Api/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:80
+    networks:
+      - default
+      - smakownia
+    volumes:
+      - smakownia-upload:/app/upload
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:11-alpine
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=aruzo
+      - POSTGRES_PASSWORD=yourStrong(!)Password
+
+volumes:
+  smakownia-upload:
+    name: smakownia-upload
+  postgres-data:
+
+networks:
+  smakownia:
+    name: smakownia

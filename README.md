@@ -1,1 +1,3 @@
-# sk-products
+# Smakownia
+
+https://github.com/smakownia/smakownia
