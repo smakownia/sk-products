@@ -15,19 +15,19 @@ services:
     volumes:
       - smakownia-upload:/app/upload
     depends_on:
-      - ms-sql
-  ms-sql:
-    image: mcr.microsoft.com/mssql/server:2019-CU14-ubuntu-20.04
+      - postgres
+  postgres:
+    image: postgres:11-alpine
     volumes:
-      - ms-sql-data:/var/opt/mssql
+      - postgres-data:/var/lib/postgresql/data
     environment:
-      - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=yourStrong(!)Password
+      - POSTGRES_USER=aruzo
+      - POSTGRES_PASSWORD=yourStrong(!)Password
 
 volumes:
   smakownia-upload:
     name: smakownia-upload
-  ms-sql-data:
+  postgres-data:
 
 networks:
   smakownia:

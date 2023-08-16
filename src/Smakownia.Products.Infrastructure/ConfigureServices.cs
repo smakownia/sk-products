@@ -20,7 +20,7 @@ public static class ConfigureServices
             });
         });
 
-        services.AddDbContext<ProductsContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("MsSql")));
+        services.AddDbContext<ProductsContext>(opt => opt.UseNpgsql(configuration.GetConnectionString("Postgres")));
 
         services.AddTransient<IProductsRepository, ProductsRepository>();
         services.AddTransient<ICategoriesRepository, CategoriesRepository>();
