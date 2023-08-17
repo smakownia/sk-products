@@ -11,6 +11,14 @@ public class ProductsContext : DbContext
     public DbSet<Category> Categories { get; set; }
     public DbSet<Product> Products { get; set; }
 
+    public void ApplyMigrations()
+    {
+        if (Database.GetPendingMigrations().Any())
+        {
+            Database.Migrate();
+        }
+    }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.ApplyConfiguration(new CategoryEntityConfiguration());
